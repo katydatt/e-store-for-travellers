@@ -1,0 +1,35 @@
+<div class="new-product">
+  <h2> Insert a new item to sell </h2>
+  <div class="new-product-form">
+    <form action="/products" method="post" enctype='multipart/form-data'>
+
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <label>Name</label><br>
+      <input type="text" name="name"><br>
+
+      <label>Size</label><br>
+      <input type="text" name="size"><br>
+
+      <label>Image</label><br>
+      <input type="file" name="image"><br>
+
+      <div class="dropdown-category">
+        <label>Category</label><br>
+          <select name="category">
+            <% Category.all.each do |category| %>
+            <option value="<%= category.id %>"> <%= category.name %></option>
+          <% end %>
+        </select>
+      </div><br>
+
+      <label>Description</label><br>
+      <textarea name="description"></textarea><br>
+
+      <label>Price</label><br>
+      <input type="number" name="price" placeholder="  $"><br>
+
+       <button class="btn-product-form"> Save </button><br>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 class="index text-center">Before you go</h1>
+            <hr>
+            <h3 class="subtitle-index">
+                Bootstrap CSS framework! Just download your template and start going, no strings attached!</h3>
+
+            <a href="/products" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3 col-md-8 col-sm-12 text-center">
+
+                <hr class="light">
+                <p class="text-faded">Ideal for travelers who can make some money from it, and in the worst of cases they can help the community, simply getting rid of their stuff without even worry to put a foot outside the house.</p>
+                <% if !user_signed_in? && !charity_signed_in? %>
+                <a href="/users/sign_up" class="btn btn-default btn-xl">Users!</a>
+                <a href="/charities/sign_up" class="btn btn-default btn-xl">Charity Org!</a>
+            <% else %>
+                <% if user_signed_in? %>
+                <a href="/products/new" class="btn btn-default btn-xl">
+                    Get Started !</a>
+                <% elsif charity_signed_in? %>
+                <a href="/products" class="btn btn-default btn-xl">
+                    Explore what we have !</a>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <div id="content">
+    <a href="#modal-start-selling" class="modal-trigger"> <%= link_to 'Sell', new_product_path %> </a><br />
+    <a href="#"> Look into our database</a>
+
+  </div> -->
+
+<div class="category-cards">
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <script id="category-template" type="text/x-handlebars-template">
+                <div class="index-card-container col-xs-12 col-md-6 col-lg-4" id="card{{ id }}">
+                    <div class="">
+                        <a href="/categories/{{ id }}" class="portfolio-box">
+                            <img src="{{ img }}" class="img-responsive img-cards" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        Category
+                                    </div>
+                                    <div class="project-name">
+                                        {{ category }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </script>
+        </div>
+
+    </section>
+
+</div>

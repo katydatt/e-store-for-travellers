@@ -1,0 +1,14 @@
+<div class="section-box-item">
+  <div class="form-product-checkout">
+    <% @cart.items.each do |item| %>
+      <div class="box-list-checkout">
+
+      <h4><%= item.quantity %> Items in the cart</h4>
+      <p><%= item.product.name %></p>
+      <p>  <%= number_to_currency item.total_price %></p>
+
+    <% end %>
+
+    <button><%= link_to 'Checkout', checkout_cart_path %></button>
+  </div>
+</div>

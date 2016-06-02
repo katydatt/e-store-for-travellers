@@ -1,0 +1,29 @@
+
+
+<div class="checkout-div">
+  <h2> You are checking out the following products: </h2>
+  <div class="product-details">
+    <% @cart.items.each do |item| %>
+    <p>  <%= item.product.name.capitalize %></p>
+    <p>  <%= item.product.category.name %> <%= number_to_currency item.total_price %> </p>
+      <% end %>
+      <label>Total Price </label><br>
+      <p>  <%= number_to_currency @cart.total_price %></p>
+  </div>
+
+  <div class="details-user-form">
+    <%= form_for @order_form, url: orders_path do |f|%>
+      <% f.fields_for :user, @order_form.user do |u| %>
+        <p>Fill the form with your details</p>
+        <p><%= render "orders/errors" %></p> 
+        <p><%= u.text_field :name, placeholder: "Name" %></p>
+        <p><%= u.text_field :email, placeholder: "Email" %></p>
+        <p><%= u.text_field :address, placeholder: "Address" %></p>
+        <p><%= u.text_field :postal_code, placeholder: "Postal code" %></p>
+        <p><%= u.text_field :city, placeholder: "City" %></p>
+        <p><%= u.text_field :country, placeholder: "Country" %></p>
+        <%= f.submit "Place order"%><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>

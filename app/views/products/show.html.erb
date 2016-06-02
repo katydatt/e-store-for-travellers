@@ -1,0 +1,13 @@
+
+
+<div>
+  <%= @product.name %>
+  <%= @product.size %>
+  <%= number_to_currency @product.price %>
+  <img src="<%= @product.image %>" width="150px" heigth="150px">
+</div>
+
+<p><%= link_to "Add to cart" , add_cart_path, method: :post %></p>
+<button><%= link_to 'Edit', edit_product_path(@product) %></button>
+
+  <button><%= link_to 'Back', products_path %></button>

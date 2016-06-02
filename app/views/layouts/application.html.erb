@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>BeforeYouGo</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://use.fontawesome.com/3ffabadf5d.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+        <nav class="application-menu-bar navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Before you go</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                    <% if @cart %>
+                      <% if @cart.empty? %>
+                        <li>
+                          <i class="fa fa-shopping-cart fa-2x trolley" aria-hidden="true"></i>
+                        </li>
+                        <% else %>
+                        <li>
+                          <a href="/cart" class="page-scroll">
+                            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true">
+                              <%= @cart.count %>
+                            </i>
+                          </a>
+                        </li>
+
+                      <% end %>
+                    <% end %>
+                        <li>
+                            <a href="/" class="page-scroll">Home</a>
+                        </li>
+
+                        <% if user_signed_in? || charity_signed_in? %>
+
+                        <% if user_signed_in? %>
+                        <li>
+                            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                        </li>
+                        <li>
+                            <%= link_to "Sell item", new_product_path %>
+                        </li>
+
+
+                        <% elsif charity_signed_in? %>
+                        <li>
+                            <%= link_to "Logout", destroy_charity_session_path, method: :delete %>
+                        </li>
+                        <% end %>
+                        <% end %>
+
+                        <% if !user_signed_in? || !charity_signed_in?%>
+                        <li>
+                            <%= link_to "Login User", new_user_session_path %>
+                        </li>
+
+                        <li>
+                            <%= link_to "Login Charity", new_charity_session_path %>
+                        </li>
+                        <% end %>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="layout-stuff">
+            <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+            <% elsif alert %>
+            <div class="alert alert-danger"><%= alert %></div>
+            <% end %>
+      </div>
+
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <%= yield %>
+
+    </body>
+</html>

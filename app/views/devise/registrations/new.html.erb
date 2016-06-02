@@ -1,0 +1,87 @@
+
+<!-- <div class="container-users">
+  <div class="user-img box">
+    <img src="/assets/user-icon.png" width="200px">
+  </div>
+  <div class="charity-img box">
+    <img src="/assets/chairty.jpg" width="200px">
+  </div>
+</div> -->
+
+<div class="modal-body seller-form">
+  <h3 class="modal-title">Sign Up</h3><br>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+
+  <div class="field">
+      <%= f.label :email %><br/>
+      <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>
+          characters minimum)</em>
+      <% end %><br/>
+      <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+      <%= f.label :address %><br/>
+      <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :postal_code %><br/>
+      <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :city %><br/>
+      <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :choose_one_organization %><br>
+    <% charity_names = [] %>
+    <% Charity.all.each do |c| charity_names << c.name  %>
+    
+
+    <%= f.select :charity_id, "charity_names" %>
+    <% end %>
+  </div>
+
+  <div class="field">
+      <%= f.label :country %><br>
+      <%= f.select :country, ["Afghanistan","Albania","Algeria","Andorra", "Angola", "Anguilla","Antigua &amp; Barbuda","Argentina","Armenia", "Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain",
+      "Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda", "Bhutan","Bolivia","Bosnia", "Herzegovina","Botswana","Brazil", "British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi", "Cambodia","Cameroon","Cape Verde","Cayman
+      Islands","Chad","Chile", "China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire", "Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark", "Djibouti","Dominica","Dominican Republic","Ecuador","Egypt", "El
+      Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands", "Faroe Islands","Fiji","Finland","France","French Polynesia", "French West Indies","Gabon","Gambia","Georgia","Germany","Ghana",
+      "Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey", "Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong", "Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland", "Isle of
+      Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan", "Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia", "Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania",
+      "Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia", "Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova", "Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique",
+      "Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia", "New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan", "Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines", "Poland","Portugal","Puerto
+      Rico","Qatar","Reunion","Romania","Russia", "Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite", "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore", "Slovakia","Slovenia","South Africa","South
+      Korea","Spain","Sri Lanka", "St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan", "Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan", "Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga", "Trinidad &amp;
+      Tobago","Tunisia","Turkey","Turkmenistan","Turks Caicos", "Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay", "Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen", "Zambia","Zimbabwe"] %><br/>
+  </div>
+
+  <div class="actions">
+      <%= f.submit "Sign up" %>
+  </div>
+  <% end %>
+</div>

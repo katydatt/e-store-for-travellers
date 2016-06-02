@@ -1,0 +1,26 @@
+<h1>All orders</h1>
+
+<div>
+
+</div>
+
+
+<% @orders.each do |o| %>
+  <%= o.id %>
+  <ul>
+    <% order.order_items.each do |item| %>
+    <li>
+      <%= item.quantity %>
+    </li>
+    <li>
+      <%= item.product.name %>
+    </li>
+    <li>
+      <%= number_to_currency order.total_price %>
+    </li>
+  </ul>
+
+      <%= order.user.name %>
+      <%= order.user.address %>
+      
+      <% end%>

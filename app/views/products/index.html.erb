@@ -1,0 +1,56 @@
+
+
+<% if user_signed_in? %>
+  <li><%= link_to 'Add New Product', new_product_path %></li>
+<% end %>
+
+<section id="portfolio" class="bg-light-gray section-box-item">
+
+  <% @products.each do |product| %>
+    <div class="form-product-container" id="product<%= product.id%>" data-target="modal<%= product.id %>">
+        <div class="box-list">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+
+                    <img src="<%= product.image %>" alt="" width="250px" class="img-cards-item">
+                </a>
+            </div>
+            <div class="portfolio-caption name-item-cards">
+              <h4><%= product.name.capitalize %></h4>
+            </div>
+          </div>
+        </div>
+
+</section>
+
+
+<div id="product<%= product.id %>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><%= product.name %></h4>
+            </div>
+            <div class="modal-body">
+              <img src="<%= product.image %>" class="img-responsive modal-image" alt="">
+              <p><%= product.size %></p>
+              <p><%= number_to_currency product.price %></p>
+              <p><%= product.description %></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<% end %>
+<script>
+
+  $(document).ready(function(){
+    $('.box-list').addClass("modal-trigger");
+    $('.modal-trigger').leanModal();
+  });
+
+</script>

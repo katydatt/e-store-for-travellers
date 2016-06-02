@@ -1,0 +1,16 @@
+<div class="all-products">
+  <% @category.products.each do |product| %>
+    <div class="col-md-4 col-sm-6 category-product-card">
+      <div class="img-categ-product">
+      <img src="<%= product.image  %>" width="100px" class="img-cards-item">
+    </div>
+      <div class="product-category-details">
+        <h2><%= product.name %></h2>
+        <p><%= number_to_currency product.price %></p>
+        <p><%= product.size %></p>
+        <p><%= product.description %></p>
+      </div>
+
+    </div>
+  <% end %>
+</div>
