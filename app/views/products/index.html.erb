@@ -16,41 +16,9 @@
             </div>
             <div class="portfolio-caption name-item-cards">
               <h4><%= product.name.capitalize %></h4>
+              <a class="link-see-more" href="/products/<%= product.id %>"> See more </a>
             </div>
           </div>
         </div>
-
+ <% end %>
 </section>
-
-
-<div id="product<%= product.id %>" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><%= product.name %></h4>
-            </div>
-            <div class="modal-body">
-              <img src="<%= product.image %>" class="img-responsive modal-image" alt="">
-              <p><%= product.size %></p>
-              <p><%= number_to_currency product.price %></p>
-              <p><%= product.description %></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<% end %>
-<script>
-
-  $(document).ready(function(){
-    $('.box-list').addClass("modal-trigger");
-    $('.modal-trigger').leanModal();
-  });
-
-</script>
