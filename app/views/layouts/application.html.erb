@@ -47,13 +47,15 @@
 
                       <% end %>
                     <% end %>
+
                         <li>
                             <a href="/" class="page-scroll">Home</a>
                         </li>
 
+
                         <% if user_signed_in? || charity_signed_in? %>
 
-                        <% if user_signed_in? %>
+                          <% if user_signed_in? %>
                         <li>
                             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
                         </li>
@@ -67,17 +69,16 @@
                             <%= link_to "Logout", destroy_charity_session_path, method: :delete %>
                         </li>
                         <% end %>
-                        <% end %>
-
-                        <% if !user_signed_in? || !charity_signed_in?%>
+                        <% elsif !user_signed_in? || !charity_signed_in?%>
                         <li>
-                            <%= link_to "Login User", new_user_session_path %>
+                          <%= link_to "Login User", new_user_session_path %>
                         </li>
 
                         <li>
-                            <%= link_to "Login Charity", new_charity_session_path %>
+                          <%= link_to "Login Charity", new_charity_session_path %>
                         </li>
-                        <% end %>
+                      <% end %>
+
 
                     </ul>
                 </div>
