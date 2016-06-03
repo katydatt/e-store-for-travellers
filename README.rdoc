@@ -1,28 +1,9 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Before you go
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Leaving the country? Rather spend your last days enjoying your current home city
+before you go than sort out your remaining things?
+Before You Go is an app that helps you to get rid of your stuff easily
+while you can still earn some money from your belongings
+if not we will give it to charity for someone in need. Bon Voyage!"
