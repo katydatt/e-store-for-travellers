@@ -1,24 +1,100 @@
 
+<h4 class="title-page"> All the products available </h4>
 
 <% if user_signed_in? %>
-  <li><%= link_to 'Add New Product', new_product_path %></li>
+<a href="#productsNew" class="btn btn-default btn-xl modal-trigger waves-effect waves-light btn link-to-new-item">
+  Add new product!</a>
 <% end %>
-
 <section id="portfolio" class="bg-light-gray section-box-item">
 
   <% @products.each do |product| %>
     <div class="form-product-container" id="product<%= product.id%>" data-target="modal<%= product.id %>">
-        <div class="box-list">
-            <div class="col-md-4 col-sm-6 portfolio-item">
-
-                    <img src="<%= product.image %>" alt="" width="250px" class="img-cards-item">
-                </a>
-            </div>
-            <div class="portfolio-caption name-item-cards">
-              <h4><%= product.name.capitalize %></h4>
-              <a class="link-see-more" href="/products/<%= product.id %>"> See more </a>
-            </div>
+      <div class="portfolio-caption name-item-cards">
+        <h6 class="name-product"><%= product.name.capitalize %></h6>
+      </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <img src="<%= product.image %>" alt="" class="img-cards-item">
+            <a class="link-see-more modal-trigger" href="#productstab<%= product.id %>"> See more </a>
           </div>
-        </div>
- <% end %>
+    </div>
+  <% end %>
+
 </section>
+  <% @products.each do |product| %>
+  <div id="productstab<%= product.id %>" class="modal div-modal">
+    <h5 class="name-modal"><%= product.name.capitalize %></h5>
+    <div class="product-modal">
+      <img class="img-modal" src="<%= product.image %>">
+    </div>
+    <div class="info-modal">
+      <table class="table table-striped ">
+        <tbody>
+          <tr>
+            <td class="name-table">Size </td>
+            <td><%= product.size %></td>
+          </tr>
+          <tr>
+            <td class="name-table"> Price </td>
+            <td class="price-item"><%= number_to_currency  product.price %></td>
+          </tr>
+          <tr>
+            <td class="name-table"> About </td>
+            <td><%= product.description %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-footer link-to-cart">
+      <a rel="nofollow" data-method="post" href="/cart/add/<%= product.id %>">Add to cart</a>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Structure -->
+<div id="productsNew" class="modal box-new-product">
+ <div class="modal-content">
+    <h4 class="title-new-product">Insert a new item to sell</h4>
+   <div class="new-product-form">
+     <form action="/products" method="post" enctype='multipart/form-data'>
+
+       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+       <label class="label-product">Name</label><br>
+       <input type="text" name="name"><br>
+
+       <label class="label-product">Size</label><br>
+       <input type="text" name="size"><br>
+
+       <label class="label-product">Image</label><br>
+       <input type="file" name="image"><br>
+
+       <div class="dropdown-category">
+         <label class="label-product">Category</label><br>
+         <select name="category" class="select-category">
+           <% Category.all.each do |category| %>
+             <option value="<%= category.id %>"> <%= category.name %></option>
+           <% end %>
+         </select>
+       </div><br>
+
+       <label class="label-product">Description</label><br>
+       <textarea name="description"></textarea><br>
+
+       <label class="label-product">Price</label><br>
+       <input type="number" name="price" placeholder="  $"><br>
+
+       <button class="btn-product-form modal-action modal-close waves-effect waves-green btn-flat product-new-btn"> Save </button><br>
+     </form>
+   </div>
+ </div>
+
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+    $(".modal-trigger").leanModal();
+  })
+</script>

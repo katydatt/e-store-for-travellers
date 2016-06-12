@@ -1,11 +1,11 @@
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1 class="index text-center">Before you go</h1>
-            <hr>
-            <h3 class="subtitle-index">
+          <h1 class="index text-center">Before you go</h1>
+          <hr>
+          <h3 class="subtitle-index">
 
-            <a href="/products" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+          <a href="/products" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
         </div>
     </div>
 </header>
@@ -18,27 +18,62 @@
                 <hr class="light">
                 <p class="text-faded">Leaving the country? Rather spend your last days enjoying your current home city before you go than sort out your remaining things? Before You Go is an app that helps you to get rid of your stuff easily while you can still earn some money from your belongings - if not we will give it to charity for someone in need. Bon Voyage!</p>
                 <% if !user_signed_in? && !charity_signed_in? %>
-                <a href="/users/sign_up" class="btn btn-default btn-xl">Users!</a>
-                <a href="/charities/sign_up" class="btn btn-default btn-xl">Charity Org!</a>
-            <% else %>
-                <% if user_signed_in? %>
-                <a href="/products/new" class="btn btn-default btn-xl">
-                    Get Started !</a>
-                <% elsif charity_signed_in? %>
-                <a href="/products" class="btn btn-default btn-xl">
-                    Explore what we have !</a>
-                <% end %>
+                  <a href="/users/sign_up" class="btn btn-default btn-xl"> New User </a>
+                  <a href="/charities/sign_up" class="btn btn-default btn-xl">New Charity Org</a>
+                <% else %>
+                  <% if user_signed_in? %>
+                    <a href="#productsNew" class="btn btn-default btn-xl modal-trigger waves-effect waves-light btn">
+                      Get Started !</a>
+                  <% elsif charity_signed_in? %>
+                    <a href="/products" class="btn btn-default btn-xl">
+                      Explore what we have !</a>
+                  <% end %>
                 <% end %>
             </div>
         </div>
     </div>
 </section>
 
-<!-- <div id="content">
-    <a href="#modal-start-selling" class="modal-trigger"> <%= link_to 'Sell', new_product_path %> </a><br />
-    <a href="#"> Look into our database</a>
 
-  </div> -->
+ <!-- Modal Structure -->
+<div id="productsNew" class="modal box-new-product">
+  <div class="modal-content">
+     <h4 class="title-new-product">Insert a new item to sell</h4>
+    <div class="new-product-form">
+      <form action="/products" method="post" enctype='multipart/form-data'>
+
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <label class="label-product">Name</label><br>
+        <input type="text" name="name"><br>
+
+        <label class="label-product">Size</label><br>
+        <input type="text" name="size"><br>
+
+        <label class="label-product">Image</label><br>
+        <input type="file" name="image"><br>
+
+        <div class="dropdown-category">
+          <label class="label-product">Category</label><br>
+          <select name="category" class="select-category">
+            <% Category.all.each do |category| %>
+              <option value="<%= category.id %>"> <%= category.name %></option>
+            <% end %>
+          </select>
+        </div><br>
+
+        <label class="label-product">Description</label><br>
+        <textarea name="description"></textarea><br>
+
+        <label class="label-product">Price</label><br>
+        <input type="number" name="price" placeholder="  $"><br>
+
+        <button class="btn-product-form modal-action modal-close waves-effect waves-green btn-flat product-new-btn"> Save </button><br>
+      </form>
+    </div>
+  </div>
+
+</div>
+
 
 <div class="category-cards">
 
@@ -68,3 +103,9 @@
     </section>
 
 </div>
+<script>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>

@@ -1,28 +1,48 @@
 
 
-<div class="checkout-div">
-  <h2> You are checking out the following products: </h2>
-  <div class="product-details">
-    <% @cart.items.each do |item| %>
-    <p>  <%= item.product.name.capitalize %></p>
-    <p>  <%= item.product.category.name %> <%= number_to_currency item.total_price %> </p>
-      <% end %>
-      <label>Total Price </label><br>
-      <p>  <%= number_to_currency @cart.total_price %></p>
-  </div>
+<div class="container-checkout">
+  <p class="text-title"> You are checking out the following: </p>
+      <table class="table table-striped">
+        <thead class="name-table">
+          <tr>
+            <td> Image </td>
+            <td> Name </td>
+            <td> Category</td>
+            <td> Size </td>
+            <td> Item Price </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.items.each do |item| %>
+
+          <tr>
+            <td><img src="<%= item.product.image %>" width="50px"></td>
+            <td><%= item.product.name.capitalize %></td>
+            <td><%= item.product.category.name %></td>
+            <td><%= item.product.size %></td>
+            <td class="price-item"><%= number_to_currency item.total_price %></td>
+            <% end %>
+          </tr>
+          <tr class="total-price total-price-checkout">
+          <td class="name-table">Total Price</td>  <td class="price-item"><%= number_to_currency @cart.total_price %></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
 
   <div class="details-user-form">
     <%= form_for @order_form, url: orders_path do |f|%>
       <% f.fields_for :user, @order_form.user do |u| %>
-        <p>Fill the form with your details</p>
-        <p><%= render "orders/errors" %></p> 
+        <p class="text-title">Fill the form with your details</p>
+        <p><%= render "orders/errors" %></p>
         <p><%= u.text_field :name, placeholder: "Name" %></p>
         <p><%= u.text_field :email, placeholder: "Email" %></p>
         <p><%= u.text_field :address, placeholder: "Address" %></p>
         <p><%= u.text_field :postal_code, placeholder: "Postal code" %></p>
         <p><%= u.text_field :city, placeholder: "City" %></p>
         <p><%= u.text_field :country, placeholder: "Country" %></p>
-        <%= f.submit "Place order"%><br>
+        <%= f.submit "Place order", class: "order-btn"%><br>
       <% end %>
     <% end %>
   </div>

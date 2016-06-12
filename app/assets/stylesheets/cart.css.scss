@@ -1,0 +1,24 @@
+.container-cart {
+  position:absolute;
+  top: 200px;
+  left: 300px;
+  width: 600px;
+  height: auto;
+}
+.name-table {
+  color: $salmon;
+}
+
+.price-item {
+  color: $petrolio;
+}
+
+.checkout-btn {
+  margin-top: 40px;
+  margin-left: 500px;
+}
+
+.total-price {
+  position: absolute;
+  left: 368px;
+}

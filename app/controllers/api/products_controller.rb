@@ -1,5 +1,7 @@
 module Api
   class ProductsController < ApplicationController
+    before_filter :initialize_cart
+    before_action :authenticate_seller!, only: [:new, :edit, :update, :create, :destroy]
 
     def index
       @products= Product.all

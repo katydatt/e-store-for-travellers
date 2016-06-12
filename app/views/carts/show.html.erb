@@ -1,14 +1,33 @@
-<div class="section-box-item">
-  <div class="form-product-checkout">
-    <% @cart.items.each do |item| %>
-      <div class="box-list-checkout">
+<div class="container-cart">
 
-      <h4><%= item.quantity %> Items in the cart</h4>
-      <p><%= item.product.name %></p>
-      <p>  <%= number_to_currency item.total_price %></p>
+      <table class="table table-striped">
+        <thead class="name-table">
+          <tr>
+            <td> Image </td>
+            <td> Name </td>
+            <td> Category</td>
+            <td> Size </td>
+            <td> Item Price </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.items.each do |item| %>
 
-    <% end %>
+          <tr>
+            <td><img src="<%= item.product.image %>" width="50px"></td>
+            <td><%= item.product.name.capitalize %></td>
+            <td><%= item.product.category.name %></td>
+            <td><%= item.product.size %></td>
+            <td class="price-item"><%= number_to_currency item.total_price %></td>
+            <% end %>
+          </tr>
+          <tr class="total-price">
+          <td class="name-table">Total Price</td>  <td class="price-item"><%= number_to_currency @cart.total_price %></td>
+          </tr>
+        </tbody>
+      </table>
 
-    <button><%= link_to 'Checkout', checkout_cart_path %></button>
-  </div>
+
+    <button class="checkout-btn"><%= link_to 'Checkout', checkout_cart_path %></button>
+
 </div>

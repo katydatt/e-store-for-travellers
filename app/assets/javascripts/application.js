@@ -17,5 +17,6 @@
 //= require wow.min
 //= require jquery.fittext
 //= require creative
-
+//= require materialize
+//= require handlebars
 //= require_tree .

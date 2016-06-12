@@ -1,0 +1,53 @@
+
+.name-item-cards {
+  background-color: rgba(240,95,64,.8);
+  height: 60px;
+  text-align: center;
+  position: relative;
+  top: 348px;
+  left: 2px;
+  max-width: 81%;
+}
+.name-product {
+  padding-top: 10px;
+}
+
+.title-page {
+  position: absolute;
+  top:65px;
+  left: 30%;
+
+}
+
+.link-to-new-item {
+  position: absolute;
+  top: 135px;
+  left: 10px;
+}
+.img-cards-item {
+  width: 80%;
+  height: 75%;
+  display: block;
+  margin: 12px auto;
+}
+.portfolio-item {
+  border: 1px solid black;
+  width: 315px;
+  height: 315px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 35px;
+  box-shadow: 10px 10px 5px #4f4f4f;
+}
+
+.section-box-item {
+  width: 100%;
+  display: inline-block;
+  margin-left: 7%;
+}
+
+.form-product-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+}
