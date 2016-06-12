@@ -5,6 +5,7 @@
 <a href="#productsNew" class="btn btn-default btn-xl modal-trigger waves-effect waves-light btn link-to-new-item">
   Add new product!</a>
 <% end %>
+
 <section id="portfolio" class="bg-light-gray section-box-item">
 
   <% @products.each do |product| %>
@@ -20,6 +21,8 @@
   <% end %>
 
 </section>
+
+
   <% @products.each do |product| %>
   <div id="productstab<%= product.id %>" class="modal div-modal">
     <h5 class="name-modal"><%= product.name.capitalize %></h5>
@@ -47,10 +50,10 @@
 
     <div class="modal-footer link-to-cart">
       <a rel="nofollow" data-method="post" href="/cart/add/<%= product.id %>">Add to cart</a>
-      <% end %>
     </div>
   </div>
-</section>
+  <% end %>
+
 
 <!-- Modal Structure -->
 <div id="productsNew" class="modal box-new-product">

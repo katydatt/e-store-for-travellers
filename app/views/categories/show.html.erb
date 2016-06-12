@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-</section>
+
   <% @category.products.each do |product| %>
     <div id="productstab<%= product.id %>" class="modal div-modal">
       <h5 class="name-modal"><%= product.name.capitalize %></h5>
@@ -41,10 +41,10 @@
 
       <div class="modal-footer link-to-cart">
         <a rel="nofollow" data-method="post" href="/cart/add/<%= product.id %>">Add to cart</a>
-        <% end %>
       </div>
     </div>
-</section>
+    <% end %>
+
 
 <script>
 
