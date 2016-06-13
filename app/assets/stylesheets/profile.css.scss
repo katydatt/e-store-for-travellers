@@ -1,0 +1,41 @@
+.user-profile-details {
+  position: absolute;
+  top: 100px;
+  left: 30%;
+  box-shadow: 10px 10px 5px $soft-grey;
+  width: 600px;
+  height: 450px;
+  font-size: 18px;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.profile-title {
+  text-align: center;
+  color: $dark-green;
+  font-weight: bold;
+}
+
+.pro-table-rows {
+  font-size: 18px;
+}
+
+.img-user {
+  width: 40%;
+  display: inline-block;
+}
+
+.table-user {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.profile-det {
+  border-bottom: 1px solid lightgrey;
+  padding: 0px;
+}
+
+.about-me {
+  padding: 20px;
+}

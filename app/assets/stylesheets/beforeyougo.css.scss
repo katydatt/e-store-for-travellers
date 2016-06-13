@@ -1,11 +1,25 @@
+* {
+  font-family:'Josefin Sans', sans-serif;
+}
 .navbar{
   background-color: black;
+  height: 30px;
+  margin: 0;
 }
+
 .layout-stuff {
   position: absolute;
   top: 100px;
   right: 30px;
 }
+
+body {
+  background-image: url("/assets/trav.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
 
 header {
   background-image: url("/assets/travel.jpg");
@@ -47,7 +61,6 @@ a:hover, a:focus{
 
 .trolley {
   color: gray;
-  margin-top: 10px;
 }
 
 .seller-form {
@@ -59,4 +72,12 @@ a:hover, a:focus{
 .category-available {
   margin-top: 130px;
   text-align: center;
+}
+.page-scroll {
+  padding: 8px;
+  font-size: 9px;
+}
+
+.page-scroll :hover {
+  color: white;
 }

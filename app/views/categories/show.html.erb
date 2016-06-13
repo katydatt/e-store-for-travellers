@@ -1,15 +1,15 @@
 <div class="bg-light-gray section-box-item">
   <p class="category-available">Products available for the category: <br><%= @category.name %></p>
   <% @category.products.each do |product| %>
-  <div class="form-product-container" id="product<%= product.id%>" data-target="modal<%= product.id %>">
-    <div class="portfolio-caption name-item-cards">
-      <h6 class="name-product"><%= product.name.capitalize %></h6>
+    <div class="form-product-container" id="product<%= product.id%>" data-target="modal<%= product.id %>">
+      <div class="col-md-4 col-sm-6 portfolio-item">
+        <img src="<%= product.image %>" alt="" class="img-cards-item">
+      </div>
+      <div class="portfolio-caption name-item-cards">
+        <a class="link-see-more modal-trigger" href="#productstab<%= product.id %>"> See more </a>
+        <h6 class="name-product"><%= product.name.capitalize %></h6>
+      </div>
     </div>
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <img src="<%= product.image %>" alt="" class="img-cards-item">
-          <a class="link-see-more modal-trigger" href="#productstab<%= product.id %>"> See more </a>
-        </div>
-  </div>
   <% end %>
 </div>
 

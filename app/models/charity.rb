@@ -4,5 +4,7 @@ class Charity < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+         mount_uploader :image, ImageUploader
+
          has_many :users
 end

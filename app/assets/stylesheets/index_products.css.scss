@@ -1,28 +1,32 @@
 
 .name-item-cards {
-  background-color: rgba(240,95,64,.8);
+  background-color: red;
   height: 60px;
   text-align: center;
-  position: relative;
-  top: 348px;
-  left: 2px;
-  max-width: 81%;
+  margin-top: 290px;
+  width: 83%;
 }
+
 .name-product {
-  padding-top: 10px;
+  position: relative;
+  bottom: 80px;
+}
+
+.link-see-more {
+  position: relative;
+  bottom: 28px;
+  color: $dark-green;
+
 }
 
 .title-page {
-  position: absolute;
-  top:65px;
-  left: 30%;
-
+text-align: center;
 }
 
 .link-to-new-item {
-  position: absolute;
-  top: 135px;
-  left: 10px;
+  // position: absolute;
+  // top: 135px;
+  // left: 10px;
 }
 .img-cards-item {
   width: 80%;
@@ -36,6 +40,8 @@
   height: 315px;
   display: inline-block;
   vertical-align: top;
+  background-color: white;
+  opacity: 0.9;
   margin-top: 35px;
   box-shadow: 10px 10px 5px #4f4f4f;
 }

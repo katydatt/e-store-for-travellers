@@ -39,6 +39,11 @@
       <%= f.text_field :name, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :chosse_image %></br>
+    <%= f.file_field :image %></br>
+  </div>
+
 
   <div class="field">
       <%= f.label :address %><br/>
@@ -59,7 +64,7 @@
     <%= f.label :choose_one_organization %><br>
     <% charity_names = [] %>
     <% Charity.all.each do |c| charity_names << c.name  %>
-    
+
 
     <%= f.select :charity_id, "charity_names" %>
     <% end %>
